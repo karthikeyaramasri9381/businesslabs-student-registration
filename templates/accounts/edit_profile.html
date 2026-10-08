@@ -1,0 +1,219 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+Edit Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+
+    <div class="form-card">
+
+        <h2 class="page-title">Edit Profile</h2>
+
+        {% if error %}
+            <div class="alert alert-danger">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label">Name</label>
+                    <input
+                        type="text"
+                        name="full_name"
+                        value="{{ student.full_name }}"
+                        class="form-control"
+                        required
+                    >
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input
+                        type="email"
+                        value="{{ student.email }}"
+                        class="form-control"
+                        disabled
+                    >
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">New Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        class="form-control"
+                        placeholder="Leave empty to keep current password"
+                    >
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Date of Birth</label>
+                    <input
+                        type="date"
+                        name="date_of_birth"
+                        value="{{ student.date_of_birth|date:'Y-m-d' }}"
+                        class="form-control"
+                        required
+                    >
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Gender</label>
+
+                    <div class="mt-2">
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Male"
+                            {% if student.gender == "Male" %}checked{% endif %}
+                        >
+                        <label class="me-3">Male</label>
+
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Female"
+                            {% if student.gender == "Female" %}checked{% endif %}
+                        >
+                        <label class="me-3">Female</label>
+
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Other"
+                            {% if student.gender == "Other" %}checked{% endif %}
+                        >
+                        <label>Other</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Qualification</label>
+
+                    <select name="qualification" class="form-select" required>
+                        <option value="10th" {% if student.qualification == "10th" %}selected{% endif %}>10th</option>
+                        <option value="12th" {% if student.qualification == "12th" %}selected{% endif %}>12th</option>
+                        <option value="Diploma" {% if student.qualification == "Diploma" %}selected{% endif %}>Diploma</option>
+                        <option value="Degree" {% if student.qualification == "Degree" %}selected{% endif %}>Degree</option>
+                    </select>
+                </div>
+
+                <div class="col-md-12">
+                    <label class="form-label">Interests</label>
+
+                    <div class="mt-2">
+
+                        <input
+                            type="checkbox"
+                            name="interests"
+                            value="Sports"
+                            {% if "Sports" in student.interests %}checked{% endif %}
+                        >
+                        <label class="me-3">Sports</label>
+
+                        <input
+                            type="checkbox"
+                            name="interests"
+                            value="Technology"
+                            {% if "Technology" in student.interests %}checked{% endif %}
+                        >
+                        <label class="me-3">Technology</label>
+
+                        <input
+                            type="checkbox"
+                            name="interests"
+                            value="Music"
+                            {% if "Music" in student.interests %}checked{% endif %}
+                        >
+                        <label class="me-3">Music</label>
+
+                        <input
+                            type="checkbox"
+                            name="interests"
+                            value="Arts"
+                            {% if "Arts" in student.interests %}checked{% endif %}
+                        >
+                        <label>Arts</label>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Class</label>
+                    <input
+                        type="text"
+                        name="student_class"
+                        value="{{ student.student_class }}"
+                        class="form-control"
+                        required
+                    >
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Subject</label>
+                    <input
+                        type="text"
+                        name="subject"
+                        value="{{ student.subject }}"
+                        class="form-control"
+                        required
+                    >
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Marks</label>
+                    <input
+                        type="number"
+                        name="marks"
+                        value="{{ student.marks }}"
+                        class="form-control"
+                        required
+                    >
+                </div>
+
+                <div class="col-md-12">
+                    <label class="form-label">Replace Aadhaar PDF</label>
+                    <input
+                        type="file"
+                        name="aadhaar"
+                        class="form-control"
+                        accept=".pdf"
+                    >
+                    <small class="text-muted">
+                        Leave empty to keep the current document.
+                    </small>
+                </div>
+
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary w-100">
+                        Save Changes
+                    </button>
+                </div>
+
+                <div class="col-md-6">
+                    <a
+                        href="{% url 'student_dashboard' %}"
+                        class="btn btn-secondary w-100"
+                    >
+                        Cancel
+                    </a>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

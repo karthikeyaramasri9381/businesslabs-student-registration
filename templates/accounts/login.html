@@ -1,0 +1,90 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="form-card login-card mx-auto">
+
+        <h2 class="page-title">
+            Login
+        </h2>
+
+        {% if error %}
+            <div class="alert alert-danger">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    required
+                >
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    required
+                >
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-primary w-100"
+            >
+                Login
+            </button>
+
+            <div class="text-center mt-3">
+
+                <a href="{% url 'forgot_password' %}">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+            <div class="text-center mt-2">
+
+                <span>
+                    Don't have an account?
+                </span>
+
+                <a href="{% url 'signup' %}">
+                    Register
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

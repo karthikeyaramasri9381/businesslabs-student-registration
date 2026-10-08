@@ -1,0 +1,126 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+Student Registration
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+
+    <div class="form-card">
+
+        <h2 class="page-title">Student Registration</h2>
+
+        <form method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <div class="row g-3">
+
+                <div class="col-md-4">
+                    <label class="form-label">Name</label>
+                    <input type="text" name="full_name" class="form-control" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Date of Birth</label>
+                    <input type="date" name="date_of_birth" class="form-control" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Gender</label>
+
+                    <div class="mt-2">
+                        <input type="radio" name="gender" value="Male" required>
+                        <label class="me-3">Male</label>
+
+                        <input type="radio" name="gender" value="Female">
+                        <label class="me-3">Female</label>
+
+                        <input type="radio" name="gender" value="Other">
+                        <label>Other</label>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Qualification</label>
+
+                    <select name="qualification" class="form-select" required>
+                        <option value="">Select Qualification</option>
+                        <option value="10th">10th</option>
+                        <option value="12th">12th</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Degree">Degree</option>
+                    </select>
+                </div>
+
+                <div class="col-md-12">
+                    <label class="form-label">Interests</label>
+
+                    <div class="mt-2">
+                        <input type="checkbox" name="interests" value="Sports">
+                        <label class="me-3">Sports</label>
+
+                        <input type="checkbox" name="interests" value="Technology">
+                        <label class="me-3">Technology</label>
+
+                        <input type="checkbox" name="interests" value="Music">
+                        <label class="me-3">Music</label>
+
+                        <input type="checkbox" name="interests" value="Arts">
+                        <label>Arts</label>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Class</label>
+                    <input type="text" name="student_class" class="form-control" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Subject</label>
+                    <input type="text" name="subject" class="form-control" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Marks</label>
+                    <input type="number" name="marks" class="form-control" required>
+                </div>
+
+                <div class="col-md-12">
+                    <label class="form-label">Aadhaar Document</label>
+                    <input type="file" name="aadhaar" class="form-control" accept=".pdf" required>
+                </div>
+
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary w-100">
+                        Register
+                    </button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

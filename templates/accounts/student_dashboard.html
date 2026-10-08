@@ -1,0 +1,94 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+Student Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+
+    <div class="bg-primary text-white rounded p-4 mb-4">
+        <h3>Welcome, {{ student.full_name }}</h3>
+        <p class="mb-0">User ID: #{{ student.id }}</p>
+    </div>
+
+    <div class="form-card">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3>My Profile</h3>
+
+            <div>
+                <a href="{% url 'edit_profile' %}" class="btn btn-primary me-2">
+    Edit Profile
+</a>
+
+                <a href="{% url 'logout' %}" class="btn btn-outline-danger">
+                    Logout
+                </a>
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            <div class="col-md-6">
+                <strong>Name</strong>
+                <p>{{ student.full_name }}</p>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Email</strong>
+                <p>{{ student.email }}</p>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Date of Birth</strong>
+                <p>{{ student.date_of_birth }}</p>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Gender</strong>
+                <p>{{ student.gender }}</p>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Qualification</strong>
+                <p>{{ student.qualification }}</p>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Interests</strong>
+                <p>{{ student.interests }}</p>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Class</strong>
+                <p>{{ student.student_class }}</p>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Subject</strong>
+                <p>{{ student.subject }}</p>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Marks</strong>
+                <p>{{ student.marks }}</p>
+            </div>
+
+            <div class="col-md-6">
+                <strong>Aadhaar</strong>
+                <p>
+                    <a href="{{ student.aadhaar.url }}" target="_blank">
+                        View Aadhaar
+                    </a>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

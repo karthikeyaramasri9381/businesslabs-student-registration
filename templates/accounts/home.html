@@ -1,0 +1,31 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+Student Portal
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="form-card">
+
+        <h2 class="page-title">Student Portal</h2>
+
+        <p class="text-center">
+            Welcome to the Student Portal
+        </p>
+
+        <div class="text-center mt-4">
+
+            <a href="{% url 'signup' %}" class="btn btn-primary">
+                Register
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

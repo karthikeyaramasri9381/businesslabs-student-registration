@@ -1,0 +1,29 @@
+body {
+    background-color: #f5f7fb;
+    font-family: Arial, sans-serif;
+}
+
+.form-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.login-card {
+    max-width: 480px;
+}
+
+.form-control,
+.form-select {
+    min-height: 44px;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+footer {
+    color: #666;
+}
